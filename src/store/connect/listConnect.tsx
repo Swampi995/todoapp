@@ -57,6 +57,8 @@ function removeItem(id: string) {
     };
 }
 
+// everytime we modify the items list, store it to the async storage
+// in order to not loose the list when the app is closed and reopened
 async function storeItems(items: ListReducerState['items']) {
     const newItems = JSON.stringify(items);
     await AsyncStorage.setItem('todoItems', newItems);
