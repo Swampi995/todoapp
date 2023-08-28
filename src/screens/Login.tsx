@@ -12,8 +12,10 @@ interface LoginScreenProps extends AuthScreenProps<'Login'>, AppProps {
 }
 
 function LoginScreen({ setAuthenticated }: LoginScreenProps) {
+    // This is a custom hook, that gets the security level and if it is loaded
     const { isLoadingComplete, hasSecurity } = useAuth();
 
+    // if there is a security method set, the user should login
     const pressButton = async () => {
         if (!hasSecurity) {
             goToSettings();
@@ -23,6 +25,7 @@ function LoginScreen({ setAuthenticated }: LoginScreenProps) {
         }
     }
 
+    // this action should get user to device settings, depending on the platform
     const goToSettings = () => {
         if (Platform.OS === 'ios') {
             Linking.openURL('App-Prefs:root=TOUCHID_PASSCODE')
@@ -35,6 +38,7 @@ function LoginScreen({ setAuthenticated }: LoginScreenProps) {
         return <ActivityIndicator style={styles.loader} size={'large'} />
     }
 
+    // if there is a security method set, the user should see different labels
     return (
         <View style={styles.wrapper}>
             <View style={styles.container}>
