@@ -68,16 +68,16 @@ const mapStateToProps = (state: ReduxState) => {
     };
 };
 
-const mapDispatchToProps = (dispatch: Dispatch<ListReducerAction>) => {
+const mapDispatchToProps = (dispatch) => {
     return {
         addItem(text: string) {
-            return dispatch(addItem(text) as any);
+            return dispatch(addItem(text));
         },
         updateItem(id: string, text: string) {
-            return dispatch(updateItem(id, text) as any);
+            return dispatch(updateItem(id, text));
         },
         removeItem(id: string) {
-            return dispatch(removeItem(id) as any);
+            return dispatch(removeItem(id));
         },
     };
 };
