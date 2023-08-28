@@ -10,6 +10,7 @@ interface NavigationProps extends AppProps {
 
 }
 
+// show the right navigation stack, depending if the user is logged or not
 function Navigation(props: NavigationProps) {
   return (
     <NavigationContainer>

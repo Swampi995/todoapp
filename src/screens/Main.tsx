@@ -14,6 +14,9 @@ interface MainScreenProps extends RootStackScreenProps<'Main'>, ListProps {
 function MainScreen({ addItem, removeItem, updateItem, items }: MainScreenProps) {
     const isLoaded = useLoadStore();
     const [selectedItem, setSelected] = React.useState<ListItem>();
+
+    // if an item is selected, the submit button should update the item
+    // and if there is no item selected, this action should add a new item to the list
     const submitItem = (text: string) => {
         if (!selectedItem) {
             addItem(text);
@@ -25,6 +28,8 @@ function MainScreen({ addItem, removeItem, updateItem, items }: MainScreenProps)
         }
     }
 
+    // we use flat list to display the items due to performance reasons
+    // until the list is loaded, we will show a spinner to let user know that is loading
     return (
         <View style={styles.wrapper}>
             <Text style={styles.title}>TODO:</Text>

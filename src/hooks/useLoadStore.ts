@@ -9,6 +9,7 @@ export default function useLoadStore() {
   const dispatch = useDispatch<Dispatch<ListReducerAction>>();
 
   useEffect(() => {
+    // this method should get the stored items from the async storage, when the user gets to todo list screen
     async function loadStoreAsync() {
       const storedItems = await AsyncStorage.getItem('todoItems');
 

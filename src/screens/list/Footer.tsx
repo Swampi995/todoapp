@@ -15,6 +15,7 @@ function Footer({ item, onSubmit }: FooterProps) {
     const textRef = React.useRef<TextInput>(null);
     const [text, updateText] = React.useState<string>();
 
+    // after the button is pressed, the component will get back to it's initial state
     const pressButton = () => {
         if (!text) {
             return;
@@ -25,6 +26,7 @@ function Footer({ item, onSubmit }: FooterProps) {
         textRef.current?.blur();
     }
 
+    // if there is an item, we prepare the component for update state
     React.useEffect(() => {
         if (item) {
             updateText(item.text);
